@@ -1,33 +1,37 @@
 ## Header
 - id: "logo_text1"
-  translation: "Adrián"
+  translation: "Gabriele"
 
 - id: "logo_text2"
-  translation: "Moreno"
+  translation: "Giardino"
 
 ## Footer
-- id: "footer_notice"
-  translation: "<a href=\"https://github.com/zetxek/adrianmoreno.info\">Content</a> and <a href=\"https://github.com/zetxek/adritian-free-hugo-theme\">code available in GitHub</a>."
+# - id: "footer_notice"
+#   translation: "<a href=\"https://github.com/zetxek/adrianmoreno.info\">Content</a> and <a href=\"https://github.com/zetxek/adritian-free-hugo-theme\">code available in GitHub</a>."
 
 - id: "language"
   translation: "Language"
 
 ## Homepage head title
 - id: "head_title"
-  translation: "Adrián Moreno Peña | VP of Engineering based in Copenhagen (Denmark) ⸱ mobile apps, platforms, APIs, SaaS"
+  translation: "Gabriele Giardino | Mechatronics Engineer | Software Developer"
 
 - id: "head_description"
-  translation: "Personal site for Adrián Moreno Peña, VP of Engineering at SumUp. With a background as computer engineer and experience both as a web and mobile developer and team lead, in multi-cultural environments in Spain, the Netherlands and Denmark. You can find contact information, as well as availability for work, up-to-date curriculum and previous experience."
+  translation: "Personal site for Gabriele Giardino. With a background as Mechatronics Engineer and experience in Software Development in the automotive field, in multi-cultural environments in Belgium and Germany. You can find contact information, as well as availability for work, up-to-date curriculum and previous experience."
 
 ## Homepage showcase
 - id: "showcase_title"
-  translation: "Hello, I’m Adrián."
+  translation: "Hello, I’m Gabriele."
 
 - id: "showcase_subtitle"
-  translation: "VP of Engineering & Tribe Lead"
+  translation: "Mechatronics Engineer Software Developer"
 
 - id: "showcase_description"
-  translation: "Based in Copenhagen 🇩🇰, I work at <a target='_blank' href='https://www.sumup.com/'>SumUp</a>, a fintech company focused in small businesses, whose vision is <em>to create a world where anyone can build a thriving business</em>. <br/>My background is diverse, as a <strong>specialized generalist</strong>. In technology I have a wide range of experiences: from backend to mobile development or infrastructure, as well as individual contributor or leading teams. I apply the 3P's (People, Product, Process) to my work, and I am passionate about contributing to healthy teams that work in iterative improvements."
+  translation: "Based in Munich 🇩🇪, I work as a contractor at <a target='_blank' href='https://www.bmwgroup.com'>BMW Group</a>, increasing road safety and customers' experience through ingenious solutions.
+  </br>
+  Passionate about continuous learning, I explore new fields and build interesting personal projects.
+  </br>
+  My mantra: if something is interesting, it is worth to give a try!"
 
 - id: "showcase_button"
   translation: "Contact"
@@ -38,13 +42,24 @@
 
 - id: "about_content"
   translation:  '<p class="lead">
-    I am an engineer by formation, curious and energetic - that applies technology to solve real-world problems. Personally, I’m a very easy going, sociable, fast-learner, curious and natural leader. I do what I love, and I love what I do. I lead by example and work side by side with my teams.
+    With foundations in mechatronics and excellent technical problem-solving capabilities, I gathered experience by engineering the best ideas and solve real-world problems. 💡
+    </p>
+    <br>
+    <p class="lead"">
+    I exploited <em>deliberate practice</em> to extend my knowledge in promising fields such as Software Development and Machine Learning, to build on it both at work and in developing personal projects. 👨🏼‍💻
     </p>
     <p class="lead">
-    I am a deliberate <em>jack of all trades, master of none</em>. My profile is a hybrid of technical and managerial experience, but always related to technological projects. I bring business and product vision to tech teams, partly thanks to having started an developed a company. I am a fast learner, curious to see how technology can improve the users experience in multiple areas. I have a strong motivation and sense of responsibility with myself, my team and clients (or peers), and people like my positive and easy going, can-do attitude.
+    I believe that no problems are impossible to solve if one masters critical thinking and time management. 🧠
     </p>
-    <p class="lead">    
-    On the technical side, I’m a <em>specialized generalist</em>, always working between different areas and aiming to develop a holistic vision on what is involved into creating a successful tech product: mobile and web development, devops/SRE,... This has involved a variety of languages and frameworks in the web-side, both in the backend and in the client side.
+    <br>
+    <p class="lead">
+    I keep a virtuous cycle of improvements in communication, fostering emotional intelligence, unleashing creativity. 🎨
+    </p>
+    <p class="lead">
+    Let me give you the perfect example: in my private life, I lead groups of people who do not know each other to explore the world for a travel agency. So I can polish my social skills and broaden my mind with other travellers by discovering different places and cultures. 🌍
+    </p>
+    <p class="lead">
+    👈🏻 And yes, it is hard to find a good photographer nowadays...
     </p>'
 
 - id: "about_button"
@@ -59,19 +74,19 @@
   translation: "Experience"
 
 - id: "experience_description"
-  translation: "Over 17 years of experience working in all kind of project sizes and teams. I have architected & developed digital products to help businesses and improve people's lives, solving complex problems with simple solutions."
+  translation: "Over 6 years of experience working in different companies. I have tailored solutions to multiple engineering problems, tackling difficulty with smart solutions."
 
 - id: "experience_button"
   translation: "LinkedIn" 
 
 - id: "experience_button_url"
-  translation: "https://www.linkedin.com/in/adrianmoreno/"
+  translation: "https://www.linkedin.com/in/gabrielegiardino"
 
-- id: "experience_button2"
-  translation: "Download résumé"
+# - id: "experience_button2"
+#   translation: "Download résumé"
 
-- id: "experience_button2_url"
-  translation: "/files/cv_adrian_moreno_english.pdf"
+# - id: "experience_button2_url"
+#   translation: "/files/GabrieleMariaGiardino_textonly.pdf"
 
 - id: "experience_button3"
   translation: "All experience"
@@ -126,19 +141,19 @@
   translation: "Phone Number"
 
 - id: "contact_phone_number"
-  translation: "+45 31 57 98 27"
+  translation: "+4917655066800"
 
 - id: "contact_email_title"
   translation: "Email"
 
 - id: "contact_email_email"
-  translation: '<a href="mailto:info@adrianmoreno.info">info@adrianmoreno.info</a>'
+  translation: '<a href="mailto:gabriele.giardino.ing@gmail.com">gabriele.giardino.ing@gmail.com</a>'
 
 - id: "contact_address_title"
   translation: "Address"
 
 - id: "contact_address_address"
-  translation: "Copenhagen (DK🇩🇰)"
+  translation: "Munich (DE🇩🇪)"
 
 - id: "contact_button"
   translation: "Send Message"

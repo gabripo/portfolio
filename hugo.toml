@@ -1,4 +1,4 @@
-baseURL = "https://www.adrianmoreno.info/"
+baseURL = "https://www.gabrielegiardino.info/"
 languageCode = "en"
 DefaultContentLanguage = "en"
 
@@ -52,8 +52,8 @@ path="github.com/zetxek/adritian-free-hugo-theme"
 
 
   
-  title = "Adrián Moreno Peña | VP of Engineering based in Copenhagen (Denmark) ⸱ mobile apps, platforms, APIs, SaaS"
-  description = "Personal site for Adrián Moreno Peña, VP of Engineering at SumUp. With a background as computer engineer and experience both as a web and mobile developer and team lead, in multi-cultural environments in Spain, the Netherlands and Denmark. You can find contact information, as well as availability for work, up-to-date curriculum and previous experience."
+  title = "Gabriele Maria Giardino | Portfolio and Blog"
+  description = "Personal site for Gabriele Maria Giardino."
   images = ['/img/og-preview.png']
   
   sections = ["showcase", "about", "education", "experience", "contact"]
@@ -134,21 +134,21 @@ path="github.com/zetxek/adritian-free-hugo-theme"
   weight = 4
 
 
-  [[menu.footer]]
-  name = "💁‍♂️ About"
-  URL = "index.html#about"
-  weight = 2
+  #[[menu.footer]]
+  #name = "💁‍♂️ About"
+  #URL = "index.html#about"
+  #weight = 2
 
 
-  [[menu.footer]]
-  name = "📚 Books"
-  URL = "/books"
-  weight = 3
+  #[[menu.footer]]
+  #name = "📚 Books"
+  #URL = "/books"
+  #weight = 3
 
-  [[menu.footer]]
-  name = "🎤 Public Speaking"
-  URL = "/public-speaking"
-  weight = 4
+  #[[menu.footer]]
+  #name = "🎤 Public Speaking"
+  #URL = "/public-speaking"
+  #weight = 4
 
   #[[menu.footer]]
   #name = "📨 Contact"

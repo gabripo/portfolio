@@ -2,12 +2,12 @@
 showcase:
   enable: true
   image:
-    alt: "Profile picture of Adrián Moreno Peña (@zetxek), smiling over a petroleum color background"
-    x: "images/adrian.jpg"
-    _2x: "images/adrian@2x.jpg"
+    alt: "Profile picture of Gabriele Giardino"
+    x: "images/CVPhotos_020_processed_squared_compressed_0p5.jpg"
+    _2x: "images/CVPhotos_020_processed_squared_compressed.jpg"
   imageMobile:
-    alt: "Profile picture of Adrián Moreno Peña (@zetxek), smiling over a petroleum color background"
-    x: "images/adrian.jpg"
+    alt: "Profile picture of Gabriele Giardino"
+    x: "images/CVPhotos_020_processed_squared_compressed_0p5.jpg"
 
   button:
     icon: "icon-email"
@@ -16,25 +16,25 @@ showcase:
 
   socialLinks:
     - icon: "linkedin"
-      URL: "https://www.linkedin.com/in/adrianmoreno/"
+      URL: "https://www.linkedin.com/in/gabrielegiardino"
 
     - icon: "square-github"
-      URL: "https://github.com/zetxek"
+      URL: "https://github.com/gabripo"
 
-    - icon: "x-twitter"
-      URL: "https://twitter.com/zetxek"
+    # - icon: "x-twitter"
+    #   URL: "https://twitter.com/zetxek"
 
-    - icon: "bluesky"
-      URL: "https://bsky.app/profile/zetxek.bsky.social"
+    # - icon: "bluesky"
+    #   URL: "https://bsky.app/profile/zetxek.bsky.social"
 
-    - icon: "instagram"
-      URL: "https://www.instagram.com/zetxek"
+    # - icon: "instagram"
+    #   URL: "https://www.instagram.com/zetxek"
 
-    - icon: "threads"
-      URL: "https://threads.net/zetxek"
+    # - icon: "threads"
+    #   URL: "https://threads.net/zetxek"
 
-    - icon: "square-facebook"
-      URL: "https://www.facebook.com/zetxek"
+    # - icon: "square-facebook"
+    #   URL: "https://www.facebook.com/zetxek"
 
 # about
 about:
@@ -43,21 +43,21 @@ about:
   button:
     icon: "icon-user"
   image:
-    x: "images/working-left.webp"
-    _2x: "images/working-left@2x.webp"
+    x: "images/chichen_itza_push_0p5.jpg"
+    _2x: "images/chichen_itza_push.jpg"
 
 # education
 education:
   enable: true
   title: "Education"
   items:
-    - university: "University of Santiago de Compostela"
-      year: "2008-2010"
-      degree: "Master in Projects Management"
+    - university: "Università della Calabria"
+      year: "2011 - 2015"
+      degree: "BSc in Mechanical Engineering"
 
-    - university: "University of Santiago de Compostela"
-      year: "2004-2007"
-      degree: "Technical Engineering in Computer Systems"
+    - university: "University of Trento"
+      year: "2015 - 2018"
+      degree: "MSc in Mechatronics Engineering"
 
 # experience
 experience:
@@ -66,7 +66,7 @@ experience:
     enable: true
     icon: "icon-linkedin"
   button2:
-    enable: true
+    enable: false
     icon: "icon-file-pdf"
   button3: 
     enable: true
@@ -173,7 +173,7 @@ contact:
   enable: true
   title: "Contact"
   form:
-    action: "https://formspree.io/info@adrianmoreno.info"
+    action: "https://formspree.io/f/mzzdgggr"
     method: "POST"
 
   button:
