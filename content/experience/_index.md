@@ -4,6 +4,11 @@ type = "experience"
 draft = false
 +++
 
-Nearly two decades across the spectrum: software engineer, technical architect, founder, CTO, and VP — in startups and global scale-ups across SaaS, fintech, e-commerce, and mobile.
+I bring a unique blend of **technical expertise and creative problem-solving** through a background in Mechatronics and Embedded Software with hands-on experience in Technical Sales for railway electronics.
 
-I've built and led teams that bridge **business strategy, product strategy, and engineering execution** — scaling tech strategy, sharpening GTM delivery, and keeping architecture sustainable as the business grows. The throughline: high-performing, psychologically safe teams that ship outcomes, not just output.
+Earlier in my career, I developed and supported simulation software solutions in the automotive industry: vehicle dynamics modelling, Hardware-in-the-Loop simulation, real-time algorithms and ECU-related testing.
+Today, I use this technical foundation in a **customer-facing role**, helping translate complex requirements into feasible technical-commercial solutions.
+
+I am particularly interested in environments where deep technical understanding, customer empathy and structured communication are equally important.
+I work fluently in English and German, with Italian as my native language, and I enjoy bridging engineering, product and business stakeholders in international environments.
+My adaptability and commitment to staying ahead of industry trends make me a valuable asset to any team.

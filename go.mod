@@ -1,4 +1,4 @@
-module github.com/zetxek/adrianmoreno.info
+module github.com/gabripo/portfolio
 
 go 1.20
 

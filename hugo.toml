@@ -1,4 +1,4 @@
-baseURL = "https://www.adrianmoreno.info/"
+baseURL = "https://gabripo.github.io/"
 languageCode = "en"
 DefaultContentLanguage = "en"
 
@@ -61,24 +61,20 @@ source = "node_modules/dompurify/dist/purify.min.js"
 target = "static/js/purify.min.js"
 
 [params]
-
-title = "Adrián Moreno Peña | VP of Technology @ Worksome ⸱ Product & Engineering Leader (Copenhagen)"
-description = "VP of Technology at Worksome, leading Product, Engineering, and Design. Nearly two decades across Spain, the Netherlands, and Denmark — IC, founder, CTO, VP. I help companies align business strategy, product strategy, and engineering execution: scaling teams, sharpening GTM, and keeping technology sustainable as the business grows."
+title = "Gabriele Maria Giardino | Portfolio and Blog"
+description = "Personal site for Gabriele Maria Giardino."
 images = ['/img/og-preview.png']
 
 homepageExperienceCount = 6
 
 [params.seo]
 [params.seo.person]
-name = "Adrián Moreno Peña"
-url = "https://www.adrianmoreno.info/"
+name = "Gabriele Maria Giardino"
+url = "https://gabripo.github.io/"
 image = "/img/og-preview.png"
 sameAs = [
-  "https://www.linkedin.com/in/adrianmoreno/",
-  "https://github.com/zetxek",
-  "https://bsky.app/profile/zetxek.bsky.social",
-  "https://www.threads.net/@zetxek",
-  "https://www.instagram.com/zetxek/"
+  "https://www.linkedin.com/in/gabrielegiardino/",
+  "https://github.com/gabripo",
 ]
 
 [params.blog]
@@ -183,18 +179,18 @@ weight = 8
 
 [[menu.footer]]
 name = "💁‍♂️ About"
-url = "index.html#about"
+URL = "index.html#about"
 weight = 2
 
 
 [[menu.footer]]
 name = "📚 Books"
-url = "/books"
+URL = "/books"
 weight = 3
 
 [[menu.footer]]
 name = "🎤 Public Speaking"
-url = "/public-speaking"
+URL = "/public-speaking"
 weight = 4
 
 [[menu.footer]]

@@ -9,7 +9,7 @@ test.describe('Homepage', () => {
     expect(response.status()).toBeLessThan(400);
 
     // Check page title matches expected
-    await expect(page).toHaveTitle('Adrián Moreno Peña | VP of Technology @ Worksome ⸱ Product & Engineering Leader (Copenhagen)');
+    await expect(page).toHaveTitle('Gabriele Giardino | Mechatronics Engineer | Software Developer');
 
     // Verify key sections are present
     await expect(page.locator('#about')).toBeVisible();

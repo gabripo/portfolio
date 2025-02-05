@@ -1,4 +1,4 @@
 ---
-title: "Adrián Moreno Peña | VP of Technology @ Worksome ⸱ Product & Engineering Leader (Copenhagen)"
+title: "Gabriele Giardino | Mechatronics Engineer | Technical Sales Manager (Switzerland)"
 type: home
 ---
