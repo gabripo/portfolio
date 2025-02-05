@@ -69,7 +69,7 @@ experience:
     enable: false
     icon: "icon-file-pdf"
   button3: 
-    enable: false
+    enable: true
     icon: "icon-circle-arrow-right"
 
 # Client & Work
