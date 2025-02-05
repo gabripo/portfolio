@@ -92,7 +92,7 @@
   translation: "All experience"
 
 - id: "experience_button3_url"
-  translation: "/experience"
+  translation: "/portfolio/experience"
 
 ## Homepage client & work
 - id: "client_work_title"
