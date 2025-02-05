@@ -64,7 +64,7 @@ experience:
   enable: true
   button:
     enable: true
-    icon: "icon-linkedin"
+    icon: "icon-linkedin-normal"
   button2:
     enable: false
     icon: "icon-file-pdf"
