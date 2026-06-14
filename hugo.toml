@@ -150,10 +150,8 @@ name = "Experience"
 url = "index.html#experience-single"
 weight = 3
 
-[[menu.header]]
-name = "Articles"
-url = "/blog"
-weight = 4
+
+
 
 [[menu.header]]
 name = "Books"
@@ -193,10 +191,8 @@ name = "🎤 Public Speaking"
 URL = "/public-speaking"
 weight = 4
 
-[[menu.footer]]
-name = "📝 Blog"
-url = "/blog"
-weight = 5
+
+
 
 [[menu.footer]]
 name = "📌 Now"
