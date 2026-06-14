@@ -18,38 +18,12 @@
           <p class="lead">📚 This is a <strong>list of the books I have found significative</strong> for my personal
           growth, both in the professional and personal life.</p>
           
-          <!-- Add Table of Contents -->
-          <div class="book-toc mb-5">
-            <h2>Categories</h2>
-            <ul class="list-unstyled row row-cols-1 row-cols-md-3 g-4">
-              {{ $book_categories := slice "Engineering Management" "Organization design" "Software engineering and development" "Technical interview preparation" "Product, strategy and business" "Leadership" "Workplace and culture" "Biographies/company stories" "Psychology (cognitive, evolutionary, phylosophy...)" "Society, world and future" "Sport & performance" "My reading list" }}
-              {{ range $book_categories }}
-              <li class="col">
-                <a href="#{{ anchorize . }}" class="book-toc-link">
-                  {{ . }}
-                </a>
-              </li>
-              {{ end }}
-            </ul>
-          </div>
-        </div>
-
         <div class="container mb-5">
-          {{ $book_categories := slice "Engineering Management" "Organization design" "Software engineering and development" "Technical interview preparation" "Product, strategy and business" "Leadership" "Workplace and culture" "Biographies/company stories" "Psychology (cognitive, evolutionary, phylosophy...)" "Society, world and future" "Sport & performance" "My reading list" }}
-          {{ range $book_categories }}
-          <div class="book-section mb-5">
-            <h2 id="{{ anchorize . }}" class="book-category">
-              <a href="#{{ anchorize . }}" class="book-category-anchor">
-                <span class="icon">🔗</span> {{ . }}
-              </a>
-            </h2>
-            <div class="row">
-              {{ range where (where site.RegularPages "Draft" false) "Params.book_categories" "intersect" (slice . ) }}
-                {{ .Render "summary"}} 
-              {{ end }}
-            </div>
+          <div class="row">
+            {{ range (where site.RegularPages "Section" "book").ByTitle }}
+              {{ .Render "summary" }}
+            {{ end }}
           </div>
-          {{ end }}
         </div>
       </div>
     </section>
