@@ -1,0 +1,88 @@
+{{/*
+  contact.html, used via {{ partial "contact.html" . }}
+  from contact-section.html
+  
+  Arguments:
+  sectionId: Optional argument to override the default HTML id for this section. If not provided, the default id is used. */}}
+
+{{- $contextType := printf "%T" . -}}
+{{- $isShortcode := (eq $contextType "*hugolib.ShortcodeWithPage") -}}
+
+{{ $sectionId := "contact" }}
+{{ if $isShortcode }}
+  {{ with .Get "sectionId" }}
+    {{ $sectionId = . }}
+  {{ end }}
+{{ end }}
+
+{{/*----------------------------------------------
+    TITLE
+------------------------------------------------*/}}
+{{ $title := "" }}
+{{ if $isShortcode }}
+  {{ $title = .Get "title" | default (i18n "contact_title") }}
+{{ else }}
+  {{ $title = i18n "contact_title" }}
+{{ end }}
+
+{{/*----------------------------------------------
+    CONTACT INFORMATION FIELDS
+------------------------------------------------*/}}
+{{ $phone := "" }}
+{{ $phone_display := "" }}
+{{ $email := "" }}
+{{ $location := "" }}
+{{ if $isShortcode }}
+  {{ $phone = .Get "contact_phone_number" | default (.Get "phone") | default hugo.Data.homepage.contact.phone }}
+  {{ $phone_display = .Get "contact_phone_number" | default (.Get "phone_display") | default hugo.Data.homepage.contact.phone_display | default $phone }}
+  {{ $email = .Get "contact_email_email" | default (.Get "email") | default hugo.Data.homepage.contact.email }}
+  {{ $location = .Get "contact_address_address" | default (.Get "location") | default hugo.Data.homepage.contact.location }}
+{{ else }}
+  {{ $phone = hugo.Data.homepage.contact.phone }}
+  {{ $phone_display = hugo.Data.homepage.contact.phone_display | default $phone }}
+  {{ $email = hugo.Data.homepage.contact.email }}
+  {{ $location = hugo.Data.homepage.contact.location }}
+{{ end }}
+
+{{/*----------------------------------------------
+    HEADING LABELS
+------------------------------------------------*/}}
+{{ $phone_heading := "" }}
+{{ $email_heading := "" }}
+{{ $location_heading := "" }}
+{{ if $isShortcode }}
+  {{ $phone_heading = .Get "contact_phone_title" | default (.Get "phone_heading") | default hugo.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
+  {{ $email_heading = .Get "contact_email_title" | default (.Get "email_heading") | default hugo.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
+  {{ $location_heading = .Get "contact_address_title" | default (.Get "location_heading") | default hugo.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+{{ else }}
+  {{ $phone_heading = hugo.Data.homepage.contact.phone_heading | default (i18n "contact_phone_heading") }}
+  {{ $email_heading = hugo.Data.homepage.contact.email_heading | default (i18n "contact_email_heading") }}
+  {{ $location_heading = hugo.Data.homepage.contact.location_heading | default (i18n "contact_location_heading") }}
+{{ end }}
+
+<section {{if $sectionId}} id="{{ $sectionId }}"{{end}} class="section section--contact pt-0">
+    <div class="container">
+        <div class="contact w-100">
+            <h2>{{ $title }}</h2>
+
+            <div class="row pt-2">
+                <div class="col-12 contact__info">
+                    {{ if $phone }}
+                    <h3>{{ $phone_heading }}</h3>
+                    <span>{{ $phone | safeHTML }}</span>
+                    {{ end }}
+
+                    {{ if $email }}
+                    <h3>{{ $email_heading }}</h3>
+                    <span>{{ $email | safeHTML }}</span>
+                    {{ end }}
+                    
+                    {{ if $location }}
+                    <h3>{{ $location_heading }}</h3>
+                    <span>{{ $location | safeHTML }}</span>
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
