@@ -4,7 +4,7 @@
       <div class="col-md-2 col-sm-3">
         {{ if .Params.cover }}
         <img
-          src="{{ .Params.cover }}"
+          src="{{ strings.TrimPrefix "/" .Params.cover | relURL }}"
           class="img-fluid rounded-start book-cover"
           alt="Cover of {{ .Title }} by {{ .Params.book_authors }}"
         />
@@ -27,7 +27,7 @@
             >
               <img
                 class="goodreads-search"
-                src="/img/goodreads.svg"
+                src="{{ "img/goodreads.svg" | relURL }}"
                 alt="Search in goodreads"
                 width="24"
                 height="24"
