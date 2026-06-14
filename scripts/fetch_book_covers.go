@@ -117,8 +117,11 @@ func modifyContent(content string) string {
 	title := extractField(matches[1], "title")
 	authors := extractArrayField(matches[1], "book_authors")
 
-	// Create search query
-	searchQuery := fmt.Sprintf("%s %s", title, strings.Join(authors, " "))
+	// Create search query (clean subtitle / parentheses to increase match rate)
+	cleanTitle := strings.Split(title, ":")[0]
+	cleanTitle = strings.Split(cleanTitle, "(")[0]
+	cleanTitle = strings.TrimSpace(cleanTitle)
+	searchQuery := fmt.Sprintf("%s %s", cleanTitle, strings.Join(authors, " "))
 	imageURL := searchBookCover(searchQuery)
 
 	if imageURL == "" {
