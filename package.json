@@ -28,7 +28,7 @@
     "test": "npm run test:e2e",
     "test:e2e": "playwright test",
     "test:e2e:install": "playwright install",
-    "cv:dev": "hugo serve",
+    "cv:dev": "hugo serve -b http://localhost:1313/",
     "cv:qr": "node scripts/generate-cv-qr.js",
     "cv:pdf": "npm run cv:qr && node scripts/generate-cv-pdf.js"
   },

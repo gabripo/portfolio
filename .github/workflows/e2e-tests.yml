@@ -47,7 +47,7 @@ jobs:
         run: hugo --minify --buildDrafts=true
 
       - name: Start Hugo server
-        run: hugo server -D &
+        run: hugo server -D -b http://localhost:1313/ &
         
       - name: Wait for Hugo server
         run: |

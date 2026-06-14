@@ -48,4 +48,4 @@ button1_icon="icon-linkedin"
 button2_url="https://e.pcloud.link/publink/show?code=XZ7DpcZVfWjn0rGJsYERTD0jolUgp31o0Wk"
 button2_text="Download CV"
 button3_text="All experience"
-button3_url="/experience" >}}
+button3_url="experience" >}}
