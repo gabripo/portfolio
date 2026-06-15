@@ -12,18 +12,35 @@ min = "0.92.0"
 [[module.imports]]
 path = "github.com/zetxek/adritian-free-hugo-theme"
 
-## Base mounts - so your site's assets are available
+[[module.replaces]]
+old = "github.com/zetxek/adritian-free-hugo-theme"
+new = "./submodules/adritian-free-hugo-theme"
+
+## Base mounts - theme assets first
 [[module.mounts]]
-source = "archetypes"
+source = "submodules/adritian-free-hugo-theme/archetypes"
 target = "archetypes"
 
 [[module.mounts]]
-source = "assets"
+source = "submodules/adritian-free-hugo-theme/assets"
 target = "assets"
 
 [[module.mounts]]
-source = "i18n"
+source = "submodules/adritian-free-hugo-theme/i18n"
 target = "i18n"
+
+[[module.mounts]]
+source = "submodules/adritian-free-hugo-theme/layouts"
+target = "layouts"
+
+[[module.mounts]]
+source = "submodules/adritian-free-hugo-theme/static"
+target = "static"
+
+## Local site mounts - overlay theme (later mounts take precedence)
+[[module.mounts]]
+source = "assets"
+target = "assets"
 
 [[module.mounts]]
 source = "layouts"
@@ -32,6 +49,14 @@ target = "layouts"
 [[module.mounts]]
 source = "static"
 target = "static"
+
+[[module.mounts]]
+source = "i18n"
+target = "i18n"
+
+[[module.mounts]]
+source = "archetypes"
+target = "archetypes"
 
 # The following mounts are required for the theme to be able to load bootstrap
 # Remember also to copy the theme's `package.json` to your site, and run `npm install`
