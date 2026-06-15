@@ -1,0 +1,6 @@
+[submodule "submodules/adritian-free-hugo-theme"]
+	path = submodules/adritian-free-hugo-theme
+	url = https://github.com/zetxek/adritian-free-hugo-theme.git
+[submodule "submodules/adrianmoreno.info"]
+	path = submodules/adrianmoreno.info
+	url = https://github.com/zetxek/adrianmoreno.info.git
