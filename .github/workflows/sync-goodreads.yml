@@ -1,14 +1,16 @@
 name: Sync Goodreads Books
 
+# Goodreads removed its RSS feeds. To add new books: Goodreads > My Books > Tools: Import and export >
+# Export Library, then replace data/goodreads_library_export.csv with the downloaded file.
 on:
-  schedule:
-    # Runs weekly on Sundays at midnight UTC
-    - cron: '0 0 * * 0'
+  push:
+    branches: [main]
+    paths: ['data/goodreads_library_export.csv', 'scripts/fetch_goodreads_books.py']
   workflow_dispatch: # Allows manual trigger
 
 permissions:
   contents: write
-  actions: write # keep-alive: re-enable this workflow so GitHub never pauses it
+  actions: write # starts the site deploy after new books are committed
 
 jobs:
   sync-books:
@@ -37,6 +39,8 @@ jobs:
         run: python3 scripts/fetch_goodreads_books.py
 
       - name: Commit and push changes
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -48,11 +52,6 @@ jobs:
           else
             git commit -m "chore: auto-sync read books from Goodreads"
             git push origin main
+            # A push made with the workflow's token does not start other workflows: deploy explicitly.
+            gh workflow run hugo.yaml --ref main
           fi
-
-      # GitHub pauses scheduled workflows after 60 days without repository activity.
-      # Re-enabling the workflow on every run resets that timer.
-      - name: Keep the weekly schedule alive
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/sync-goodreads.yml/enable"
