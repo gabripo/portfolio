@@ -11,7 +11,7 @@ import sys
 # Config
 # Goodreads removed its RSS feeds, so the books come from the library export:
 # Goodreads > My Books > Tools: Import and export > Export Library, saved here.
-GOODREADS_EXPORT_CSV = "data/goodreads_library_export.csv"
+GOODREADS_EXPORT_CSV = "goodreads/goodreads_library_export.csv"
 CONTENT_DIR = "content/book"
 STATIC_IMG_DIR = "static/images/books"
 ALLOWED_CATEGORIES = [
