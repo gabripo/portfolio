@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Now"
 type: "blog"
 ---

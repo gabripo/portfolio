@@ -6,7 +6,7 @@ draft = false
 
 {{< showcase-section
     title="Hello, I'm Gabriele."
-    subtitle="Mechatronics Engineer Technical Sales Manager"
+    subtitle="Mechatronics Engineer · Technical Sales Manager"
     description="<p>Based in Zurich 🇨🇭, I work as a <strong>Technical Sales Manager</strong> at <a target='_blank' rel='noopener noreferrer' href='https://www.duagon.com'>Knorr-Bremse Duagon</a> — a Swiss company producing reliable embedded electronics — matching customer needs with tailored technical-commercial solutions.</p><p>Passionate about continuous learning, I explore new fields and build interesting personal projects.</p><p class='text-body-secondary fs-6 mb-0'>My mantra: if something is interesting, it is worth giving a try!</p>"
     imgSrc="images/CVPhotos_020_processed_squared_compressed.jpg"
     imgScale="0.5" >}}

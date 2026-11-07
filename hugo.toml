@@ -179,6 +179,11 @@ weight = 3
 
 
 [[menu.header]]
+name = "Projects"
+url = "/projects"
+weight = 4
+
+[[menu.header]]
 name = "Books"
 url = "/books"
 weight = 5
@@ -212,17 +217,13 @@ URL = "/books"
 weight = 3
 
 [[menu.footer]]
-name = "🎤 Public Speaking"
-URL = "/public-speaking"
+name = "🛠️ Projects"
+URL = "/projects"
 weight = 4
 
 
 
 
-[[menu.footer]]
-name = "📌 Now"
-url = "/now"
-weight = 6
 
 
 [taxonomies]

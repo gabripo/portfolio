@@ -1,0 +1,32 @@
+# Personal projects shown on /projects. Order = display order.
+# agentic: true marks projects built through agentic coding (my ideas, AI-written code).
+- name: "move_the_bot"
+  tagline: "Control a robotic arm by voice, hand gestures or text"
+  description: "A simulated robotic arm (ROS2, MoveIt) driven by AI agents running locally. Say \"grab the apple\" and the agent plans and executes the motion."
+  tags: ["Robotics", "ROS2", "LLM agents", "Docker"]
+  repo: "https://github.com/gabripo/move_the_bot"
+  emoji: "🦾"
+
+- name: "The EKF Tuner"
+  tagline: "A game about how robots know where they are"
+  description: "Guide a warehouse robot (AGV) through a corridor where its sensors fail. Tune the sensor-fusion filter (Extended Kalman Filter) well, and it gets through; tune it badly, and it crashes. A cost calculator shows the hardware money good tuning saves."
+  tags: ["Robotics", "Sensor fusion", "State estimation", "JavaScript"]
+  repo: "https://github.com/gabripo/the_agv_game"
+  demo: "https://gabripo.github.io/the_agv_game"
+  image: "images/projects/agv.gif"
+
+- name: "nvidia-shield-sword"
+  tagline: "An old TV box turned into an always-on assistant"
+  description: "Most of the time we own more hardware than we use. This turns an NVIDIA Shield into a home assistant I steer from Telegram: instant commands, my own scripts, and an AI agent for everything else, including searching flights and sending back screenshots."
+  tags: ["Agentic AI", "Claude Code", "Telegram", "Linux"]
+  repo: "https://github.com/gabripo/nvidia-shield-sword"
+  image: "images/projects/shield.png"
+  agentic: true
+
+- name: "Forza!"
+  tagline: "Helping aging parents get stronger and healthier"
+  description: "A free app you set up for a parent or grandparent: beginner workouts, meals estimated from a photo, and progress explained in plain words. The family \"coach\" follows along and adjusts the plan."
+  tags: ["Full-stack", "AI", "Health", "PWA"]
+  repo: "https://github.com/gabripo/forza"
+  image: "images/projects/forza.jpg"
+  agentic: true
