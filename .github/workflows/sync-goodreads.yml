@@ -1,11 +1,11 @@
 name: Sync Goodreads Books
 
 # Goodreads removed its RSS feeds. To add new books: Goodreads > My Books > Tools: Import and export >
-# Export Library, then replace data/goodreads_library_export.csv with the downloaded file.
+# Export Library, then replace goodreads/goodreads_library_export.csv with the downloaded file.
 on:
   push:
     branches: [main]
-    paths: ['data/goodreads_library_export.csv', 'scripts/fetch_goodreads_books.py']
+    paths: ['goodreads/goodreads_library_export.csv', 'scripts/fetch_goodreads_books.py']
   workflow_dispatch: # Allows manual trigger
 
 permissions:
