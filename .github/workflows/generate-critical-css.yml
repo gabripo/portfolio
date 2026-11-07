@@ -5,7 +5,7 @@ on:
     branches: [main]
 jobs:
   generate-critical-css:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write
       pull-requests: write
@@ -33,7 +33,9 @@ jobs:
       - run: npm install
 
       - name: Build
-        run: hugo --minify --buildDrafts=true
+        # Build at the root path so the CSS links in public/index.html resolve inside public/
+        # (with the production baseURL they point to /portfolio/css/..., which critical cannot find).
+        run: hugo --minify --buildDrafts=true --baseURL /
       
 
       - name: Run critical script file

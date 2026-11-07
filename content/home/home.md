@@ -45,7 +45,5 @@ intro_description="I have tailored technical-commercial solutions to multiple en
 button1_url="https://linkedin.com/in/gabrielegiardino"
 button1_text="See in LinkedIn"
 button1_icon="icon-linkedin"
-button2_url="https://e.pcloud.link/publink/show?code=XZ7DpcZVfWjn0rGJsYERTD0jolUgp31o0Wk"
-button2_text="Download CV"
 button3_text="All experience"
 button3_url="experience" >}}

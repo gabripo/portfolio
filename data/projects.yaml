@@ -30,3 +30,12 @@
   repo: "https://github.com/gabripo/forza"
   image: "images/projects/forza.jpg"
   agentic: true
+
+- name: "Brainstormer"
+  tagline: "Brainstorm alone, with AI attendees at the table"
+  description: "Runs a brainstorming session the Getting to Yes way: frame the situation, uncover interests, collect ideas without judging. AI attendees (Optimist, Skeptic, Customer, Engineer…) throw ideas from their own point of view, using Claude or a local Ollama model."
+  tags: ["AI agents", "Next.js", "Negotiation", "Claude"]
+  repo: "https://github.com/gabripo/brainstormer"
+  demo: "https://gabripo.github.io/brainstormer/"
+  emoji: "💡"
+  agentic: true
