@@ -3,11 +3,15 @@ import os
 import re
 import urllib.request
 import urllib.parse
-import xml.etree.ElementTree as ET
+import csv
+import html
 import json
+import sys
 
 # Config
-GOODREADS_RSS_URL = "https://www.goodreads.com/review/list_rss/135131678"
+# Goodreads removed its RSS feeds, so the books come from the library export:
+# Goodreads > My Books > Tools: Import and export > Export Library, saved here.
+GOODREADS_EXPORT_CSV = "data/goodreads_library_export.csv"
 CONTENT_DIR = "content/book"
 STATIC_IMG_DIR = "static/images/books"
 ALLOWED_CATEGORIES = [
@@ -27,6 +31,10 @@ ALLOWED_CATEGORIES = [
 
 # Pre-crafted database of existing books to avoid needing API key for the first run
 PREDEFINED_BOOKS = {
+    "how we decide": {
+        "category": "Psychology (cognitive, evolutionary, phylosophy...)",
+        "comment": "A look at how emotion and reason work together when we decide. It made me more aware of when to trust my gut and when to slow down and check the facts, in negotiations and in engineering trade-offs alike."
+    },
     "a whole new mind": {
         "category": "Product, strategy and business",
         "comment": "This book shifted my focus towards holistic, creative thinking. As an engineer, combining structured logical analysis with right-brain empathy and storytelling has significantly enhanced how I collaborate and communicate complex technical sales ideas."
@@ -296,104 +304,93 @@ def download_cover_from_goodreads(image_url, slug):
         print(f"Failed to download cover from Goodreads: {e}")
         return ""
 
-def fetch_rss_feed():
-    print(f"Fetching RSS feed from: {GOODREADS_RSS_URL}")
-    req = urllib.request.Request(
-        GOODREADS_RSS_URL,
-        headers={"User-Agent": "Mozilla/5.0"}
-    )
-    with urllib.request.urlopen(req) as response:
-        return response.read()
+def fetch_book_page(book_id):
+    """Cover and description from the public Goodreads book page (no sign-in needed)."""
+    url = f"https://www.goodreads.com/book/show/{book_id}"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req) as response:
+            page = response.read().decode("utf-8", errors="replace")
+    except Exception as e:
+        print(f"Could not open the book page {url}: {e}")
+        return "", ""
+
+    def meta(prop):
+        m = re.search(r'<meta[^>]+property="og:' + prop + r'"[^>]+content="([^"]*)"', page)
+        return html.unescape(m.group(1)) if m else ""
+
+    return meta("image"), meta("description")
+
+def read_export():
+    if not os.path.exists(GOODREADS_EXPORT_CSV):
+        print(f"Missing {GOODREADS_EXPORT_CSV}: export your library from Goodreads and commit it there.")
+        sys.exit(1)
+    with open(GOODREADS_EXPORT_CSV, newline="", encoding="utf-8-sig") as f:
+        return list(csv.DictReader(f))
 
 def main():
-    try:
-        xml_data = fetch_rss_feed()
-    except Exception as e:
-        print(f"Failed to fetch Goodreads RSS: {e}")
-        return
-        
-    root = ET.fromstring(xml_data)
-    channel = root.find("channel")
-    if channel is None:
-        print("Invalid RSS feed: channel not found")
-        return
-        
-    items = channel.findall("item")
-    print(f"Found {len(items)} total items in RSS feed")
-    
+    rows = read_export()
+    books = [r for r in rows if (r.get("Exclusive Shelf") or "").strip() == "read"]
+    print(f"Found {len(books)} read books out of {len(rows)} in the Goodreads export")
+    if not books:
+        print("No read books in the export: is it the right file?")
+        sys.exit(1)
+
     os.makedirs(CONTENT_DIR, exist_ok=True)
     os.makedirs(STATIC_IMG_DIR, exist_ok=True)
-    
+
     new_books_count = 0
     updated_books_count = 0
-    
-    for item in items:
-        title = item.find("title").text
-        author = item.find("author_name").text
-        book_id = item.find("book_id").text
-        book_large_image_url = item.find("book_large_image_url").text or ""
-        
-        user_shelves = item.find("user_shelves").text or ""
-        user_shelves = [s.strip() for s in user_shelves.split(",") if s.strip()]
-        
-        if "to-read" in user_shelves or "currently-reading" in user_shelves:
-            print(f"Skipping shelf: {title} (shelves: {user_shelves})")
-            continue
-            
-        description_elem = item.find("book_description")
-        description = description_elem.text if description_elem is not None else ""
-        description = re.sub(r'<[^>]*>', '', description or "")
-        
+
+    for row in books:
+        title = row["Title"].strip()
+        author = row["Author"].strip()
+        book_id = row["Book Id"].strip()
+
         slug = sanitize_slug(title)
-        md_filename = f"{slug}.md"
-        md_path = os.path.join(CONTENT_DIR, md_filename)
-        
-        goodreads_link = f"https://www.goodreads.com/book/show/{book_id}"
-        
-        # Download cover image
-        cover_path = download_cover_from_goodreads(book_large_image_url, slug)
-        
-        # If markdown already exists, check if cover is present. If cover is missing, inject it.
+        md_path = os.path.join(CONTENT_DIR, f"{slug}.md")
+        cover_file = os.path.join(STATIC_IMG_DIR, f"{slug}.jpg")
+        has_cover = os.path.exists(cover_file) and os.path.getsize(cover_file) > 0
+
+        if os.path.exists(md_path) and has_cover:
+            continue
+
+        image_url, description = fetch_book_page(book_id)
+        cover_path = download_cover_from_goodreads(image_url, slug)
+
         if os.path.exists(md_path):
             with open(md_path, "r", encoding="utf-8") as f:
                 content = f.read()
-            
-            # Check if cover field exists in frontmatter
             frontmatter_match = re.match(r'(?s)^---\n(.*?)\n---', content)
-            if frontmatter_match:
+            if frontmatter_match and "cover:" not in frontmatter_match.group(1) and cover_path:
                 frontmatter = frontmatter_match.group(1)
-                if "cover:" not in frontmatter and cover_path:
-                    new_frontmatter = frontmatter + f'\ncover: "{cover_path}"'
-                    new_content = content.replace(frontmatter, new_frontmatter, 1)
-                    with open(md_path, "w", encoding="utf-8") as f:
-                        f.write(new_content)
-                    print(f"Updated cover for existing book: {title}")
-                    updated_books_count += 1
+                content = content.replace(frontmatter, frontmatter + f'\ncover: "{cover_path}"', 1)
+                with open(md_path, "w", encoding="utf-8") as f:
+                    f.write(content)
+                print(f"Updated cover for existing book: {title}")
+                updated_books_count += 1
             continue
-            
+
         print(f"New book found: {title} by {author}")
-        
         category, comment = get_book_details(title, author, description)
-        
+        safe_title = title.replace('"', '\\"')
         markdown_content = f"""---
-title: "{title}"
+title: "{safe_title}"
 book_authors: ["{author}"]
 book_categories: ["{category}"]
-link: "{goodreads_link}"
+link: "https://www.goodreads.com/book/show/{book_id}"
 featured: false
 cover: "{cover_path}"
 ---
 
 {comment}
 """
-        
         with open(md_path, "w", encoding="utf-8") as f:
             f.write(markdown_content)
-            
         print(f"Created file: {md_path}")
         new_books_count += 1
-        
-    print(f"Successfully processed feed. Added {new_books_count} new books, updated {updated_books_count} existing covers.")
+
+    print(f"Done. Added {new_books_count} new books, updated {updated_books_count} existing covers.")
 
 if __name__ == "__main__":
     main()
