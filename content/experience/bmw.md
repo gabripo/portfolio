@@ -26,5 +26,5 @@ Results:
 * Development according to the ISO26262 standard, to achieve the highest safety
 * Online estimation of vehicle dynamic wheel radii from 2s to 300 ms
 * Sensor signals filtering with noise prevention
-* Reduction of time complexity of a rolling variance computation algorithm by 300% on a vehicle ECU
+* Made a rolling-variance computation on a vehicle ECU 4× faster
 * Real-time algorithm to acknowledge if a vehicle is in offroad conditions, by using limited information about sensors only

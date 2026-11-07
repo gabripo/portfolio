@@ -1,4 +1,5 @@
 ---
+draft: true
 title: "Blog"
 url: blog
 layout: "blog"
