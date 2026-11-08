@@ -32,3 +32,8 @@ scripts/*.zip/*
 
 # Git worktrees
 .worktrees/
+
+# LinkedIn posts, exported at build time from the private posts repo
+_linkedin-posts/
+data/linkedin_posts.json
+assets/linkedin/
