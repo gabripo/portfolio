@@ -16,6 +16,11 @@
       .project-tags li { font-size: .8rem; padding: .1rem .5rem; border-radius: 999px; border: 1px solid var(--bs-border-color, #dee2e6); }
       .project-links { margin-top: auto; display: flex; gap: .75rem; padding-top: .5rem; }
       .project-agentic { font-size: .85rem; opacity: .8; margin: 0; }
+      .project-posts { font-size: .9rem; margin: 0; padding: 0; list-style: none; }
+      .project-posts li::before, .project-posts li::marker { content: none; display: none; }
+      .project-posts li { margin: .15rem 0; }
+      .project-posts time { opacity: .7; margin-right: .35rem; }
+      .linkedin-more { margin-top: 3rem; }
     </style>
   </head>
 
@@ -29,17 +34,34 @@
           <p class="project-agentic">Projects marked ✳︎ were built through agentic coding with Claude Code: the problem, the ideas and the direction are mine; the AI wrote the code.</p>
 
           <div class="row g-4 mt-2">
+            {{/* LinkedIn posts (newest first), exported at build time from the private posts repo; may be absent */}}
+            {{ $allPosts := site.Data.linkedin_posts | default slice }}
+            {{ $projectRepos := slice }}
             {{ range site.Data.projects }}
+            {{ $repoName := path.Base .repo }}
+            {{ $projectRepos = $projectRepos | append $repoName }}
+            {{ $posts := where $allPosts "project" $repoName }}
+            {{ $cover := "" }}{{ $coverAlt := "" }}
+            {{ range $posts }}{{ if and (not $cover) .media }}
+              {{ $m := index .media 0 }}
+              {{ with resources.Get (printf "linkedin/%s" $m.path) }}{{ $cover = (.Fit "960x540 q82").RelPermalink }}{{ $coverAlt = $m.alt }}{{ end }}
+            {{ end }}{{ end }}
             <div class="col-12 col-md-6">
               <article class="project-card">
-                <div class="project-media{{ if and .image (strings.HasSuffix .image ".png") }} contain{{ end }}">
-                  {{ with .image }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<span class="project-emoji" aria-hidden="true">{{ .emoji }}</span>{{ end }}
+                <div class="project-media{{ if and (not $cover) .image (strings.HasSuffix .image ".png") }} contain{{ end }}">
+                  {{ if $cover }}<img src="{{ $cover }}" alt="{{ $coverAlt }}" loading="lazy">
+                  {{ else }}{{ with .image }}<img src="{{ . | relURL }}" alt="" loading="lazy">{{ else }}<span class="project-emoji" aria-hidden="true">{{ .emoji }}</span>{{ end }}{{ end }}
                 </div>
                 <div class="project-body">
                   <h2>{{ .name }}{{ if .agentic }} <span title="Built through agentic coding">✳︎</span>{{ end }}</h2>
                   <p class="project-tagline">{{ .tagline }}</p>
                   <p class="mb-1">{{ .description }}</p>
                   <ul class="project-tags">{{ range .tags }}<li>{{ . }}</li>{{ end }}</ul>
+                  {{ with $posts }}
+                  <ul class="project-posts" aria-label="Posts on LinkedIn">
+                    {{ range . }}<li><time datetime="{{ .date }}">{{ (time .date).Format "Jan 2006" }}</time><a href="{{ .linkedin_url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a> <span aria-hidden="true">↗</span></li>{{ end }}
+                  </ul>
+                  {{ end }}
                   <div class="project-links">
                     {{ with .demo }}<a class="btn btn-primary btn-sm" href="{{ . }}" target="_blank" rel="noopener noreferrer">Try it</a>{{ end }}
                     <a class="btn btn-outline-secondary btn-sm" href="{{ .repo }}" target="_blank" rel="noopener noreferrer">Code on GitHub</a>
@@ -49,6 +71,17 @@
             </div>
             {{ end }}
           </div>
+
+          {{ $earlier := slice }}
+          {{ range $allPosts }}{{ if not (in $projectRepos .project) }}{{ $earlier = $earlier | append . }}{{ end }}{{ end }}
+          {{ with $earlier }}
+          <div class="linkedin-more">
+            <h2 class="h4">Earlier projects on LinkedIn</h2>
+            <ul class="project-posts">
+              {{ range . }}<li><time datetime="{{ .date }}">{{ (time .date).Format "Jan 2006" }}</time><a href="{{ .linkedin_url }}" target="_blank" rel="noopener noreferrer">{{ .title }}</a> <span aria-hidden="true">↗</span>{{ with .repo }} · <a href="{{ . }}" target="_blank" rel="noopener noreferrer">code</a>{{ end }}</li>{{ end }}
+            </ul>
+          </div>
+          {{ end }}
         </div>
       </div>
     </section>

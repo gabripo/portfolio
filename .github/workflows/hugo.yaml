@@ -10,6 +10,10 @@ on:
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
+  # Daily rebuild: picks up LinkedIn posts that went live (scheduled posts) and edits in the posts repo
+  schedule:
+    - cron: '17 5 * * *'
+
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
@@ -30,9 +34,11 @@ defaults:
 jobs:
   # Build job
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     env:
       HUGO_VERSION: 0.157.0
+      # Read-only token for the private gabripo/linkedin-posts repository (optional: without it the site builds without posts)
+      POSTS_REPO_TOKEN: ${{ secrets.POSTS_REPO_TOKEN }}
     steps:
       - name: Install Hugo CLI
         run: |
@@ -45,6 +51,20 @@ jobs:
         with:
           submodules: recursive
           fetch-depth: 0
+      - name: Checkout LinkedIn posts (private)
+        if: env.POSTS_REPO_TOKEN != ''
+        uses: actions/checkout@v4
+        with:
+          repository: gabripo/linkedin-posts
+          token: ${{ env.POSTS_REPO_TOKEN }}
+          path: _linkedin-posts
+      - name: Export the public LinkedIn posts
+        if: env.POSTS_REPO_TOKEN != ''
+        run: |
+          python3 -m pip install --quiet pyyaml
+          # Only posts already public on LinkedIn: text to data/, images to assets/linkedin/
+          python3 _linkedin-posts/scripts/export_for_portfolio.py data/linkedin_posts.json assets/linkedin
+          rm -rf _linkedin-posts
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
@@ -71,7 +91,7 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: build
     steps:
       - name: Deploy to GitHub Pages
