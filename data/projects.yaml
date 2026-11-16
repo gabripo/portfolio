@@ -1,11 +1,12 @@
 # Personal projects shown on /projects. Order = display order.
 # agentic: true marks projects built through agentic coding (my ideas, AI-written code).
 - name: "move_the_bot"
-  tagline: "Control a robotic arm by voice, hand gestures or text"
-  description: "A simulated robotic arm (ROS2, MoveIt) driven by AI agents running locally. Say \"grab the apple\" and the agent plans and executes the motion."
-  tags: ["Robotics", "ROS2", "LLM agents", "Docker"]
+  tagline: "Tell a robot arm what to do: type it, say it, or show it with your hand"
+  description: "\"Create an apple and a red cube, then put the apple on the cube.\" An agent turns the sentence into skills, MoveIt 2 plans collision-free motions and ros2_control executes them on an SO-101 arm. Your webcam can steer the gripper too: move your hand, pinch to grab. The arm is simulated by default; because every command goes through ros2_control, the same code drives NVIDIA Isaac Sim or the real arm by changing one launch argument. Runs locally in Docker, tested end to end on every change."
+  tags: ["ROS 2", "MoveIt 2", "ros2_control", "NVIDIA Isaac Sim", "LLM agents", "Teleoperation"]
   repo: "https://github.com/gabripo/move_the_bot"
-  emoji: "🦾"
+  image: "images/projects/move_the_bot.gif"
+  agentic: true
 
 - name: "The EKF Tuner"
   tagline: "A game about how robots know where they are"
