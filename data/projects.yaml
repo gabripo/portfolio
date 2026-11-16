@@ -2,7 +2,7 @@
 # agentic: true marks projects built through agentic coding (my ideas, AI-written code).
 - name: "move_the_bot"
   tagline: "Tell a robot arm what to do: type it, say it, or show it with your hand"
-  description: "\"Create an apple and a red cube, then put the apple on the cube.\" An agent turns the sentence into skills, MoveIt 2 plans collision-free motions and ros2_control executes them on an SO-101 arm. Your webcam can steer the gripper too: move your hand, pinch to grab. The arm is simulated by default; because every command goes through ros2_control, the same code drives NVIDIA Isaac Sim or the real arm by changing one launch argument. Runs locally in Docker, tested end to end on every change."
+  description: "\"Create an apple and a red cube, then put the apple on the cube.\" An agent turns the sentence into skills, MoveIt 2 plans collision-free motions and ros2_control executes them on an SO-101 arm. Your webcam can steer the gripper too: move your hand, pinch to grab. The arm is simulated by default; because every command goes through ros2_control, the same code drives NVIDIA Isaac Sim or the real arm by changing one launch argument. Runs locally in Docker, tested end to end on every change. AI coding agents wrote most of the code; the engineering is mine. As a mechatronics engineer I chose the seams: inverse kinematics tailored to the 5-joint arm, ros2_control as the boundary between simulation and hardware, and a calibration and safety path for the real servos."
   tags: ["ROS 2", "MoveIt 2", "ros2_control", "NVIDIA Isaac Sim", "LLM agents", "Teleoperation"]
   repo: "https://github.com/gabripo/move_the_bot"
   image: "images/projects/move_the_bot.gif"
